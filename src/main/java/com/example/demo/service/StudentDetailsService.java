@@ -14,6 +14,8 @@ StudentDetailsRepo studentDetailsRepo;
 public void addStudentDetails(StudentDetails studentDetails) {
 	studentDetailsRepo.save(studentDetails);
 	
+
+	
 }
 	
 }

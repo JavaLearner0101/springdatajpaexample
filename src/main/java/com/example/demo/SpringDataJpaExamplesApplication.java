@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.example.demo.entity.StudentCourses;
+import com.example.demo.entity.StudentEnroll;
 import com.example.demo.service.StudentCoursesService;
 import com.example.demo.service.StudentDetailsService;
 import com.example.demo.service.StudentService;
+import com.example.demo.service.SudentEnrollService;
 
 @SpringBootApplication
 public class SpringDataJpaExamplesApplication {
@@ -20,7 +21,8 @@ public class SpringDataJpaExamplesApplication {
 		StudentService studentService = context.getBean(StudentService.class);
 		StudentDetailsService studentDetailsService = context.getBean(StudentDetailsService.class);
 		StudentCoursesService studentCoursesService = context.getBean(StudentCoursesService.class);
-		System.out.println("rajesh this is done");
+		SudentEnrollService studentEnrollSerivce  = context.getBean(SudentEnrollService.class);
+		System.out.println("this has started");
 		
 		// **************************************************
 		// add a record to student table
@@ -40,8 +42,16 @@ public class SpringDataJpaExamplesApplication {
 		// **************************************************
 		// insert record into student courses table
 		// **************************************************
-		StudentCourses studentCourses = new StudentCourses(11,"core java",3,10000);
-		studentCoursesService.studentCoursesadd(studentCourses);
+//		StudentCourses studentCourses = new StudentCourses(11,"core java",3,10000,null);
+//		studentCoursesService.studentCoursesadd(studentCourses);
+//
+		StudentEnroll studentEnroll = new StudentEnroll( null,1,11,2345);
+		studentEnrollSerivce.studentEnrollAdd(studentEnroll);  
+		StudentEnroll studentEnroll1 = new StudentEnroll(null,2,11,1234);
+		studentEnrollSerivce.studentEnrollAdd(studentEnroll1);  
+		StudentEnroll studentEnroll2 = new StudentEnroll( null,3,12,1234);
+		studentEnrollSerivce.studentEnrollAdd(studentEnroll2);
+		
 		context.close();
 //**************************************** END of the file ************************
 
