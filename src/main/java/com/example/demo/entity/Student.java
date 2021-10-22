@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.transaction.TransactionScoped;
 
 @Entity
 @Table(name = "student")
@@ -19,8 +17,7 @@ public class Student {
 	private String slname;
 	private String sbranch;
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(table = "student_details", name = "srollno",insertable = false)
-	//@Transient
+    @JoinColumn(table = "student_details", name = "srollno",insertable = false,updatable = false)
 	StudentDetails studentdetails;
 	
 	public int getSrollno() {
@@ -47,6 +44,9 @@ public class Student {
 	public void setSbranch(String sbranch) {
 		this.sbranch = sbranch;
 	}
+
+	
+
 	public StudentDetails getStudentdetails() {
 		return studentdetails;
 	}
@@ -65,5 +65,7 @@ public class Student {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 }

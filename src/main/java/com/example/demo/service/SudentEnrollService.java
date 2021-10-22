@@ -15,4 +15,6 @@ public class SudentEnrollService {
 	public void studentEnrollAdd (StudentEnroll studentEnroll) {
 		StudentEnrollRepo.save(studentEnroll);
 		}
+	
+	
 }

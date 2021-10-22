@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class StudentDetails {
 	private String scity;
 	private String sstate;
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(table = "student", name = "srollno", insertable = false)
+	@JoinColumn(table = "student", name = "srollno", insertable = false,updatable = false)
 	Student student;
 
 	public StudentDetails(int srollno, String saddress, String scity, String sstate) {

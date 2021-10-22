@@ -22,9 +22,15 @@ public class StudentCourses {
 	private int courseduration;
 	private int fee;
 	private List<StudentEnroll> studentEnroll;
-		
-	@OneToMany(mappedBy = "studentSources", cascade =CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(insertable = false,updatable = false)
+
+	@OneToMany(mappedBy = "courseid", 
+								cascade = CascadeType.ALL, 
+								fetch = FetchType.EAGER,
+								targetEntity = StudentEnroll.class)
+	public List<StudentEnroll> getStudentEnroll() {
+		return studentEnroll;
+	}
+
 	public void setStudentEnroll(List<StudentEnroll> studentEnroll) {
 		this.studentEnroll = studentEnroll;
 	}
@@ -33,7 +39,7 @@ public class StudentCourses {
 	@Column(name = "course_id")
 	public int getCourseid() {
 		return courseid;
-	
+
 	}
 
 	@Column(name = "course_name")
@@ -67,7 +73,6 @@ public class StudentCourses {
 		this.fee = fee;
 	}
 
-	
 	public StudentCourses(int courseid, String coursename, int courseduration, int fee,
 			List<StudentEnroll> studentEnroll) {
 		this.courseid = courseid;
@@ -77,5 +82,15 @@ public class StudentCourses {
 		this.studentEnroll = studentEnroll;
 	}
 
-		
+	public StudentCourses() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+//	@Override
+//	public String toString() {
+//		return "StudentCourses [courseid=" + courseid + ", coursename=" + coursename + ", courseduration="
+//				+ courseduration + ", fee=" + fee + ", studentEnroll=" + studentEnroll + "]";
+//	}
+
 }
